@@ -1,0 +1,210 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif, Helvetica, sans-serif;
+    }
+    body{
+        background: linear-gradient(135deg, #294268 0%, #83c0ec 100%);
+    }
+/* General Form Styling */
+.form-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.form-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    border-radius: 2px;
+}
+
+/* Form Layout */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+/* Input Groups */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-group label {
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 14px 15px;
+    border: 2px solid #e0e6ed;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+    color: #2c3e50;
+    font-family: inherit;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+/* Make complaint text area span two columns */
+.input-group:nth-last-child(2) {
+    grid-column: span 2;
+}
+
+.input-group:nth-last-child(2) textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+/* Make file upload span two columns */
+.input-group:nth-last-child(1) {
+    grid-column: span 2;
+}
+
+/* Submit Button */
+.btn-submit {
+    grid-column: span 2;
+    padding: 16px;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #2980b9, #1c2833);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+/* File Upload Styling */
+.input-group input[type="file"] {
+    padding: 12px;
+    background: white;
+    border: 2px dashed #bdc3c7;
+    cursor: pointer;
+}
+
+.input-group input[type="file"]:hover {
+    border-color: #3498db;
+    background: #f8f9fa;
+}
+
+.input-group input[type="file"]::file-selector-button {
+    padding: 10px 20px;
+    margin-right: 15px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.input-group input[type="file"]::file-selector-button:hover {
+    background: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    form {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-group:nth-last-child(2),
+    .input-group:nth-last-child(1),
+    .btn-submit {
+        grid-column: 1;
+    }
+    
+    .input-group:nth-last-child(2) textarea {
+        min-height: 120px;
+    }
+}
+
+/* Animation for form elements */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus styles for accessibility */
+.input-group input:focus-visible,
+.input-group select:focus-visible,
+.input-group textarea:focus-visible {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Optional: Add placeholder styling */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #95a5a6;
+    opacity: 0.7;
+}

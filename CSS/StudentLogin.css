@@ -1,0 +1,672 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 8s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    100% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+}
+
+/* Floating Background Elements */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(118, 75, 162, 0.12) 0%, transparent 50%);
+    z-index: -1;
+    animation: floatBackground 20s ease-in-out infinite;
+}
+
+@keyframes floatBackground {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.95); }
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 480px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 40px 35px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: containerAppear 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    text-align: center;
+    z-index: 1;
+}
+
+@keyframes containerAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logo Styling */
+.log-img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.3));
+    animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+.log-img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 25px rgba(102, 126, 234, 0.4));
+}
+
+/* Decorative Student Emoji */
+.container::before {
+    content: '👨‍🎓';
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 60px;
+    opacity: 0.1;
+    z-index: -1;
+    animation: studentFloat 6s ease-in-out infinite;
+}
+
+@keyframes studentFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+        transform: translate(10px, -15px) rotate(10deg);
+    }
+    66% {
+        transform: translate(-5px, 10px) rotate(-5deg);
+    }
+}
+
+/* Heading Styles */
+.container h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    margin-bottom: 35px;
+    position: relative;
+    padding-bottom: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    animation: lineExpand 1s ease-out 0.5s both;
+}
+
+@keyframes lineExpand {
+    0% { width: 0; }
+    100% { width: 100px; }
+}
+
+/* Form Styles */
+#Login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Input Box Container */
+.input-box {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 18px 55px 18px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #e6f0ff;
+    border-radius: 15px;
+    font-size: 16px;
+    color: #2c3e50;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.08);
+    font-family: inherit;
+}
+
+.input-box input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+    transform: translateY(-3px);
+}
+
+.input-box input::placeholder {
+    color: #a0b4c8;
+    transition: all 0.3s ease;
+}
+
+.input-box input:focus::placeholder {
+    opacity: 0.5;
+    transform: translateX(10px);
+}
+
+/* Password Container with Show/Hide Toggle */
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    padding-right: 85px !important; /* Extra space for toggle button */
+}
+
+.password-container i {
+    position: absolute;
+    right: 55px; /* Moved left to make space for toggle */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #667eea;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.password-container input:focus + i {
+    color: #764ba2;
+    transform: translateY(-50%) scale(1.1);
+    animation: iconBounce 0.5s ease;
+}
+
+/* Show/Hide Password Toggle Button */
+.toggle-password {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    color: #a0b4c8;
+    font-size: 22px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+}
+
+.toggle-password:hover {
+    background: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.toggle-password:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Toggle Icon Animation */
+.toggle-password::before {
+    content: '👁️';
+    transition: all 0.3s ease;
+}
+
+.toggle-password.showing::before {
+    content: '🙈';
+    animation: eyeToggle 0.3s ease;
+}
+
+@keyframes eyeToggle {
+    0% { transform: scale(0) rotate(-90deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); }
+}
+
+/* Remember Me & Forgot Password */
+.Remember-Forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 5px;
+    animation: slideUp 0.5s ease-out 0.4s both;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Remember-Forgot label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #5a6c7d;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.Remember-Forgot label:hover {
+    color: #667eea;
+}
+
+.Remember-Forgot label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #667eea;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.Remember-Forgot label input[type="checkbox"]:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.Remember-Forgot a {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.Remember-Forgot a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.Remember-Forgot a:hover {
+    color: #764ba2;
+}
+
+.Remember-Forgot a:hover::after {
+    width: 100%;
+}
+
+/* Back to Staff Login */
+.Back-to-staff {
+    margin: 20px 0 30px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out 0.3s both;
+    border-top: 1px solid rgba(102, 126, 234, 0.2);
+    padding-top: 20px;
+}
+
+.Back-to-staff p {
+    margin: 0;
+}
+
+.Back-to-staff a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 8px 20px;
+    border-radius: 25px;
+    background: rgba(102, 126, 234, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.Back-to-staff a::before {
+    content: '👨‍🏫';
+    font-size: 18px;
+}
+
+.Back-to-staff a:hover {
+    color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    padding: 8px 25px;
+}
+
+.Back-to-staff a:active {
+    transform: translateY(-1px);
+}
+
+/* Login Button */
+.btn {
+    margin-top: 10px;
+    animation: slideUp 0.5s ease-out 0.5s both;
+}
+
+.btn button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn button:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+    letter-spacing: 1.5px;
+}
+
+.btn button:active {
+    transform: translateY(-2px);
+}
+
+/* Button Shine Effect */
+.btn button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn button:hover::before {
+    left: 100%;
+}
+
+/* Register Link */
+.register-link {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(102, 126, 234, 0.2);
+    animation: slideUp 0.5s ease-out 0.6s both;
+}
+
+.register-link p {
+    color: #5a6c7d;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.register-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0 2px;
+    font-size: 16px;
+}
+
+.register-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+    border-radius: 1px;
+}
+
+.register-link a:hover {
+    color: #764ba2;
+}
+
+.register-link a:hover::after {
+    width: 100%;
+}
+
+/* Error Message Styling */
+.error-message {
+    background: linear-gradient(135deg, #ff4d4d, #ff3333);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    animation: errorShake 0.5s ease;
+    box-shadow: 0 8px 25px rgba(255, 77, 77, 0.2);
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Success Message Styling */
+.success-message {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    animation: successBounce 0.5s ease;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+}
+
+@keyframes successBounce {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    body {
+        padding: 15px;
+    }
+    
+    .container {
+        padding: 30px 25px;
+        border-radius: 20px;
+    }
+    
+    .log-img {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+    
+    .container h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #Login-form {
+        gap: 20px;
+    }
+    
+    .input-box input {
+        padding: 16px 50px 16px 18px;
+        font-size: 15px;
+    }
+    
+    .password-container input {
+        padding-right: 75px !important;
+    }
+    
+    .password-container i {
+        right: 50px;
+        font-size: 22px;
+    }
+    
+    .toggle-password {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        right: 15px;
+    }
+    
+    .Remember-Forgot {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+    
+    .Back-to-staff a {
+        font-size: 14px;
+        padding: 6px 15px;
+    }
+    
+    .btn button {
+        padding: 16px;
+        font-size: 16px;
+    }
+    
+    .register-link p {
+        font-size: 15px;
+    }
+    
+    .container::before {
+        font-size: 50px;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 25px 20px;
+    }
+    
+    .container h1 {
+        font-size: 24px;
+    }
+    
+    .log-img {
+        width: 130px;
+    }
+    
+    .Back-to-staff a {
+        font-size: 13px;
+    }
+}
+
+/* Loading State Animation */
+.btn button.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn button.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Focus Styles for Accessibility */
+input:focus-visible,
+button:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}

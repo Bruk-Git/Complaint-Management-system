@@ -1,0 +1,187 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 59, 111, 0.1);
+            text-align: center;
+        }
+
+        .log-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid #003b6f;
+            padding: 5px;
+        }
+
+        h1 {
+            color: #003b6f;
+            font-size: 24px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        #Login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .input-box input:focus {
+            outline: none;
+            border-color: #003b6f;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 59, 111, 0.1);
+        }
+
+        .input-box input::placeholder {
+            color: #8a9aad;
+        }
+
+        .Remember-Forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .Remember-Forgot label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #5a6c7d;
+            cursor: pointer;
+        }
+
+        .Remember-Forgot input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #003b6f;
+            cursor: pointer;
+        }
+
+        .Remember-Forgot a {
+            color: #003b6f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .Remember-Forgot a:hover {
+            color: #0056a8;
+            text-decoration: underline;
+        }
+
+        .btn button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #003b6f, #0056a8);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn button:hover {
+            background: linear-gradient(135deg, #0056a8, #003b6f);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 59, 111, 0.2);
+        }
+
+        .btn button:active {
+            transform: translateY(0);
+        }
+
+        .Back-to-staff {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .Back-to-staff a {
+            color: #003b6f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .Back-to-staff a:hover {
+            color: #0056a8;
+            text-decoration: underline;
+        }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #5a6c7d;
+        }
+
+        .register-link a {
+            color: #003b6f;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: #0056a8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .input-box input {
+                padding: 12px 14px;
+            }
+            
+            .Remember-Forgot {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+        }
